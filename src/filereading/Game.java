@@ -1236,7 +1236,7 @@ public class Game extends JComponent implements KeyListener {
 			wallslist.add(halfrighttop);
 			Npc stan = new Npc(200, 300, 100, 100, "pics/stanup.png");
 			stan.textboxes.add(new Textbox(makeArrayList("Stan: I heard that you were pretty strong..."), stanneutral));
-			stan.textboxes.add(new Textbox(makeArrayList("Stan: So there's an extremly stong enemy in the next room",
+			stan.textboxes.add(new Textbox(makeArrayList("Stan: So there's an extremely strong enemy in the next room",
 					"make sure that you're ready"), stanhappy));
 			npcs.add(stan);
 			tppads.add(new Teleportpad(TPPAD_UP, 32));

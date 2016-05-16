@@ -1,24 +1,16 @@
 <snippet>
-  <content><![CDATA[
+  <content>
 # Fred's Adventure
-TODO: Write a project description
+This is the code for the grade 11 culminating assignment
+Fred's adventure is an rpg where you control Fred, a bipedal rabbit with many magic powers.
+
+![Failed to load image](http://s32.postimg.org/xon6fogcx/fred.png)fred
 ## Installation
-TODO: Describe the installation process
-## Usage
-TODO: Write usage instructions
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
-## License
-TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
+Download the folder and set up an eclipse project, starting at the root of this folder
+## Controls
+General:
+ <tabTrigger>Press q to toggle double screen size</tabTrigger>
+</content>
+ 
 </snippet>
   

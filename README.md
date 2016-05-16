@@ -34,7 +34,17 @@ When transformed, press g to attack.
 
 other controls will be onscreen.
 
+# Mechanics
+##Basic Gameplay
+This game is a turn based RPG, in which you choose attacks based on what you think will be super effective 
 
+(For example, a fire creature would be weak to a water attack)
+## Transformation
+There is a transformation mechanic in place in the game. It is basically a trump card, as enemies do not attack you when you attack them in this form.
+## Super effectiveness an critical hits
+Depending on the attack that you use, you may do more damage depending on which enemy you are attacking
+
+every attack has a chance to deal a critical hit, which does double damage, just like the super effective hit does
 </content>
  
 </snippet>

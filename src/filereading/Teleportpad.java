@@ -15,7 +15,17 @@ public class Teleportpad {
 	Player theplayer;
 	boolean isactivated = false;
 	int lifetime;
-
+/**
+ * The "Teleportpad" is what triggers the movement to a new room. 
+ * @param xpos
+ * @param ypos
+ * @param w
+ * @param h
+ * @param roomnum
+ * @param newlocx
+ * @param newlocy
+ * @param plyr
+ */
 	public Teleportpad(int xpos, int ypos, int w, int h, int roomnum, int newlocx, int newlocy, Player plyr) {
 		x = xpos;
 		y = ypos;
@@ -68,7 +78,11 @@ public class Teleportpad {
 		// theplayer = plyr;
 		rect = new Rectangle(x, y, width, height);
 	}
-
+/**
+ * when the player collides with this Teleportpad, it turns isactivated to true and teleports the player to the specified location
+ * @param g
+ * @param player
+ */
 	public void dostuff(Graphics g, Player player) {
 		theplayer = player;
 		if (lifetime < 62)
@@ -82,7 +96,7 @@ public class Teleportpad {
 				theplayer.y = newylocation;
 			}
 		} else {
-			System.out.print("WHAT THE FUCK");
+			System.out.print("Dammit");
 		}
 
 	}

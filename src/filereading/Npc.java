@@ -26,17 +26,10 @@ public class Npc {
 		height = h;
 		img = new Image(url).img;
 	}
-
-	public Npc(int xpos, int ypos, int w, int h, String url, int index) {
-		x = xpos;
-		y = ypos;
-		width = w;
-		height = h;
-		img = new Image(url).img;
-		windowindex = index;
-		shouldopenwindow = true;
-	}
-
+/**
+ * does the basic drawing (and movement if nessesary)
+ * @param g
+ */
 	public void draw(Graphics g) {
 		if (x < 900 && x > (-100 - width))
 			x += velx;

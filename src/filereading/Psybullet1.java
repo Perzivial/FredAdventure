@@ -21,7 +21,10 @@ public class Psybullet1 {
 		damage = dmg;
 		img = new Image(url).img;
 	}
-
+/**
+ * draws and rotates the image of the fireball to save space on different images
+ * @param g
+ */
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		int yint = (int) y;

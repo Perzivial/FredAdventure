@@ -19,7 +19,13 @@ public class Textbox {
 		img = image;
 		index = indx;
 	}
-
+/**
+ * most used contructor, two colors are the colors of the textbox, not the text, the text is always white
+ * @param lns
+ * @param image
+ * @param color1
+ * @param color2
+ */
 	public Textbox(ArrayList<String> lns, BufferedImage image, Color color1, Color color2) {
 		lines = lns;
 		img = image;

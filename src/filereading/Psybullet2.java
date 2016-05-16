@@ -20,7 +20,10 @@ public class Psybullet2 {
 		y = ypos;
 		strength = lvl;
 	}
-
+/**
+ * used by fred in his transformed state
+ * @param g
+ */
 	public void draw(Graphics g) {
 		int yint = (int) y;
 		x += velx;

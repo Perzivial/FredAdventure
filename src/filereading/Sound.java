@@ -17,7 +17,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * Handles playing, stoping, and looping of sounds for the game.
  * 
  * @author Tyler Thomas
- *
+ * 
+ * taken and edited by Luke Hoel.
+ * Changes: added catch if the url doesnt work,  tries alternate path.
+ * Root folder is different for eclipse and for exported jar, catch is a looparound
  */
 public class Sound {
 	private Clip clip;

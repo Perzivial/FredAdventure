@@ -23,7 +23,10 @@ public class Shrapnel {
 		size = sz;
 		color = clr;
 	}
-
+/**
+ * brings the lifetime down and moves the shrapnel down (gravity), also,drawing
+ * @param g
+ */
 	public void draw(Graphics g) {
 		lifetime--;
 		y += vely;

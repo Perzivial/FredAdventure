@@ -1,12 +1,10 @@
 package filereading;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
@@ -15,7 +13,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,7 +21,6 @@ import java.util.List;
 import java.util.Random;
 import javax.sound.sampled.Line;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class Game extends JComponent implements KeyListener {
@@ -92,6 +88,8 @@ public class Game extends JComponent implements KeyListener {
 	Sound bestfriend = new Sound("sounds/bestfriend.wav");
 	Sound bossbattlemusic = new Sound("sounds/bosstheme.wav");
 	Sound normalbattlemusic = battlemusic;
+	Sound wintry = new Sound("sounds/winter.wav");
+	Sound ding = new Sound("sounds/textbox.wav");
 	int theplayersx;
 	int theplayersy;
 	int attackpowermodifier;
@@ -446,6 +444,7 @@ public class Game extends JComponent implements KeyListener {
 					if (!theplayer.isinteracting) {
 						theplayer.isinteracting = true;
 						textboxtimer = 15;
+						ding.play();
 					}
 				}
 
@@ -645,8 +644,9 @@ public class Game extends JComponent implements KeyListener {
 				if (theplayer.isinteracting && textboxtimer <= 0) {
 					for (int i = 0; i < npcs.size(); i++) {
 						if (checkcollision(theplayer.rectinteract, npcs.get(i).rect)) {
-							if (npcs.get(i).currentimg < npcs.get(i).textboxes.size() - 1) {
-								npcs.get(i).currentimg++;
+							if (npcs.get(i).currenttextbox < npcs.get(i).textboxes.size() - 1) {
+								ding.play();
+								npcs.get(i).currenttextbox++;
 							}
 						}
 					}
@@ -820,6 +820,8 @@ public class Game extends JComponent implements KeyListener {
 	}
 
 	public void drawwalls(Graphics g) {
+		if (currentroom <= 40)
+			g.setColor(new Color(220, 220, 220));
 		if (currentroom <= 30)
 			g.setColor(new Color(91, 68, 30));
 		if (currentroom <= 20)
@@ -973,8 +975,14 @@ public class Game extends JComponent implements KeyListener {
 			col = new Color(78, 81, 122);
 		} else if (currentroom <= 30 && displaytimer == 0) {
 			city1.stop();
+			wintry.stop();
 			city2.loop();
 			col = new Color(194, 180, 154);
+
+		} else if (currentroom <= 40 && displaytimer == 0) {
+			city2.stop();
+			wintry.loop();
+			col = new Color(240, 240, 240);
 
 		}
 		battlemusic = normalbattlemusic;
@@ -1195,15 +1203,44 @@ public class Game extends JComponent implements KeyListener {
 		}
 		if (currentroom == 25) {
 			battlemusic = bossbattlemusic;
-			enemies.add(new Enemy("Flowey", 300, 240, 50, 50, 200, 150, 100, 10, 25, "pics/flowerside.png",
-					"pics/floweybattle.png", 250, 5, "Fire"));
 			wallslist.add(walltop);
 			wallslist.add(wallbottom);
 			wallslist.add(wallright);
 			tppads.add(new Teleportpad(TPPAD_LEFT, 23));
 		}
 		if (currentroom == 31) {
+			wallslist.add(wallbottom);
+			wallslist.add(walltop);
 			tppads.add(new Teleportpad(TPPAD_LEFT, 24));
+			tppads.add(new Teleportpad(TPPAD_RIGHT, 32));
+		}
+		if (currentroom == 32) {
+			wallslist.add(wallright);
+			wallslist.add(walltop);
+			wallslist.add(halfleftbottom);
+			Npc stan = new Npc(400, 200, 100, 100, "pics/stan.png");
+			stan.textboxes.add(new Textbox(makeArrayList("Stan: Dude! You made it"), stanhappy, 520, 0));
+			stan.textboxes.add(new Textbox(
+					makeArrayList("Stan: Hey, so yeah...", "There's actually a slight problem right now..."),
+					stanneutral, 520, 1));
+			stan.textboxes
+					.add(new Textbox(makeArrayList("Stan: I'll tell you more in the next room"), stanneutral, 520, 1));
+			npcs.add(stan);
+			tppads.add(new Teleportpad(TPPAD_LEFT, 31));
+			tppads.add(new Teleportpad(TPPAD_DOWN, 33));
+		}
+		if (currentroom == 33) {
+			wallslist.add(wallleft);
+			wallslist.add(wallbottom);
+			wallslist.add(halflefttop);
+			wallslist.add(halfrighttop);
+			Npc stan = new Npc(200, 300, 100, 100, "pics/stanup.png");
+			stan.textboxes.add(new Textbox(makeArrayList("Stan: I heard that you were pretty strong..."), stanneutral));
+			stan.textboxes.add(new Textbox(makeArrayList("Stan: So there's an extremly stong enemy in the next room",
+					"make sure that you're ready"), stanhappy));
+			npcs.add(stan);
+			tppads.add(new Teleportpad(TPPAD_UP, 32));
+			tppads.add(new Teleportpad(TPPAD_RIGHT, 34));
 		}
 		if (currentroom == 666) {
 			startareamusic.stop();
@@ -1262,7 +1299,11 @@ public class Game extends JComponent implements KeyListener {
 		if (currentroom == 0) {
 			g.drawImage(interacthint, 0, 0, 800, 600, this);
 		}
-		if (currentroom == 31) {
+		if (currentroom == 34) {
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 800, 600);
+			wintry.stop();
+			bestfriend.loop();
 			g.drawImage(demoend, 0, 0, 800, 600, this);
 		}
 	}
@@ -1657,10 +1698,12 @@ public class Game extends JComponent implements KeyListener {
 			g2.setTransform(oldXForm);
 
 	}
-/**
- * draws and handles the npcs
- * @param g
- */
+
+	/**
+	 * draws and handles the npcs
+	 * 
+	 * @param g
+	 */
 	public void drawNpcs(Graphics g) {
 		for (int i = 0; i < npcs.size(); i++) {
 			npcs.get(i).draw(g);
@@ -1680,9 +1723,9 @@ public class Game extends JComponent implements KeyListener {
 				if (theplayer.rectinteract != null)
 					if (checkcollision(theplayer.rectinteract, npcs.get(i).rect)) {
 						for (int o = 0; o < npcs.get(i).textboxes.size(); o++) {
-							if (npcs.get(i).currentimg == o) {
+							if (npcs.get(i).currenttextbox == o) {
 								npcs.get(i).textboxes.get(o).draw(g);
-								if (npcs.get(i).currentimg != npcs.get(i).textboxes.size() - 1) {
+								if (npcs.get(i).currenttextbox != npcs.get(i).textboxes.size() - 1) {
 									g.setFont(g.getFont().deriveFont(g.getFont().getStyle(), 11));
 									g.drawString("Press shift to continue", 665, 565);
 								}
@@ -1703,7 +1746,7 @@ public class Game extends JComponent implements KeyListener {
 			if (!isinteractingwithany) {
 				theplayer.isinteracting = false;
 				for (int i = 0; i < npcs.size(); i++)
-					npcs.get(i).currentimg = 0;
+					npcs.get(i).currenttextbox = 0;
 			}
 		}
 
@@ -1715,11 +1758,13 @@ public class Game extends JComponent implements KeyListener {
 		}
 		return false;
 	}
-/**
- * takes an infinite amount of arguments, turns them to an arraylist 
- * @param args
- * @return
- */
+
+	/**
+	 * takes an infinite amount of arguments, turns them to an arraylist
+	 * 
+	 * @param args
+	 * @return
+	 */
 	public ArrayList<String> makeArrayList(String... args) {
 		ArrayList<String> lines = new ArrayList<>();
 		for (String arg : args) {
@@ -1727,10 +1772,12 @@ public class Game extends JComponent implements KeyListener {
 		}
 		return lines;
 	}
-/**
- * draws save and heal points
- * @param g
- */
+
+	/**
+	 * draws save and heal points
+	 * 
+	 * @param g
+	 */
 	public void drawstations(Graphics g) {
 		for (int i = 0; i < stations.size(); i++) {
 			stations.get(i).rect = new Rectangle(stations.get(i).x, stations.get(i).y, 100, 100);
@@ -1753,6 +1800,7 @@ public class Game extends JComponent implements KeyListener {
 			}
 		}
 	}
+
 	public boolean isinteractingwith(Rectangle rect) {
 		if (theplayer.rectinteract != null)
 			if (checkcollision(theplayer.rectinteract, rect))
@@ -1794,9 +1842,10 @@ public class Game extends JComponent implements KeyListener {
 		}
 	}
 
-	/**This method manages the screen that shows up after the intro screen; This
-	* screen allows you to turn sound on or off
-	*/
+	/**
+	 * This method manages the screen that shows up after the intro screen; This
+	 * screen allows you to turn sound on or off
+	 */
 	public void showchoosesound(Graphics g) {
 		Color col = new Color(0, 173, 239);
 		Color col2 = new Color(0, 153 + randInt(-10, 10), 239);
@@ -1862,13 +1911,15 @@ public class Game extends JComponent implements KeyListener {
 				shrapnellist.remove(i);
 		}
 	}
-/**
- * during battle, the clouds spawn on a timer and move across the screen, and move across 
- * a cloud can be spawned
- * @param g
- */
+
+	/**
+	 * during battle, the clouds spawn on a timer and move across the screen,
+	 * and move across a cloud can be spawned
+	 * 
+	 * @param g
+	 */
 	public void drawclouds(Graphics g) {
-		
+
 		spawncloudtimer--;
 		if (spawncloudtimer <= 0) {
 			clouds.add(new Cloud(-200, randInt(0, 200), randInt(1, 2)));
@@ -1907,8 +1958,8 @@ public class Game extends JComponent implements KeyListener {
 	public void drawsupereffective(Graphics g) {
 
 		if (supereffectivetimer < 30) {
-			g.drawImage(supereffective, 400 + (supereffectivetimer / 2), 200 + (supereffectivetimer / 2), 300 - supereffectivetimer, 87 - (supereffectivetimer /2),
-					this);
+			g.drawImage(supereffective, 400 + (supereffectivetimer / 2), 200 + (supereffectivetimer / 2),
+					300 - supereffectivetimer, 87 - (supereffectivetimer / 2), this);
 			supereffectivetimer++;
 		}
 	}
@@ -1917,9 +1968,11 @@ public class Game extends JComponent implements KeyListener {
 
 		if (criticalhittimer < 30) {
 			if (supereffectivetimer < 30)
-				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 63  +(criticalhittimer / 2), 300 - criticalhittimer, 87  -( criticalhittimer /2), this);
+				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 63 + (criticalhittimer / 2),
+						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			else
-			g.drawImage(criticalhit, 400 + +(criticalhittimer / 2), 200 + (criticalhittimer / 2), 300 - criticalhittimer, 87 -( criticalhittimer /2), this);
+				g.drawImage(criticalhit, 400 + +(criticalhittimer / 2), 200 + (criticalhittimer / 2),
+						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			criticalhittimer++;
 		}
 	}

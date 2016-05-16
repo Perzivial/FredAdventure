@@ -14,7 +14,7 @@ public class Npc {
 	ArrayList<Textbox> textboxes = new ArrayList<>();
 	BufferedImage img;
 	Rectangle rect;
-	int currentimg = 0;
+	int currenttextbox = 0;
 	int velx;
 	int vely;
 	boolean shouldopenwindow = false;

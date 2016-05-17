@@ -3,7 +3,11 @@ package filereading;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.Random;
-
+/**
+ * particles with no gravity applied to them
+ * @author Perzivial
+ *
+ */
 public class Explosion {
 	int x;
 	int y;

@@ -5,7 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-
+/**
+ * large bullets, only used by fred in his transformed state
+ * @author Perzivial
+ *
+ */
 public class Psybullet2 {
 	int x;
 	int velx = 7;

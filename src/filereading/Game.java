@@ -22,7 +22,11 @@ import java.util.Random;
 import javax.sound.sampled.Line;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
-
+/**
+ * The largest file. Manages everything in the larger game, held inside Gameviewer.java
+ * @author Perzivial
+ *
+ */
 public class Game extends JComponent implements KeyListener {
 
 	private static final long serialVersionUID = 1L;

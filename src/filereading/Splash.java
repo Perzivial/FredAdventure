@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.image.*;
 
 import javax.swing.JComponent;
-
+/**
+ * splash screen, held in startgame.java
+ * @author Perzivial
+ *
+ */
 public class Splash extends JComponent{
 BufferedImage img = new Image("pics/loading.png").img;
 /**

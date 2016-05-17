@@ -21,6 +21,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * taken and edited by Luke Hoel.
  * Changes: added catch if the url doesnt work,  tries alternate path.
  * Root folder is different for eclipse and for exported jar, catch is a looparound
+ * added isdisabled toggle
+ * added rewind()
+ * added continuesound
+ * small modifications to other methods
  */
 public class Sound {
 	private Clip clip;

@@ -2,7 +2,11 @@ package filereading;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+/**
+ * small bullet, used by non transformed fred
+ * @author Perzivial
+ *
+ */
 public class Psybullet1 {
 	int x;
 	int velx = 15;

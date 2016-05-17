@@ -3,7 +3,11 @@ package filereading;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+/**
+ * This is the class where the player (fred) is handled
+ * @author Perzivial
+ *
+ */
 public class Player {
 	String name;
 	int maxhealth;

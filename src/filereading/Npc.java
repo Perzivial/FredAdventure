@@ -5,7 +5,11 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+/**
+ * A non player character that you can talk to
+ * @author Perzivial
+ *
+ */
 public class Npc {
 	int x;
 	int y;

@@ -4,7 +4,11 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.*;
-
+/**
+ * holds and manages data for the current enemy
+ * @author Perzivial
+ *
+ */
 public class Enemy {
 	int x;
 	int y;

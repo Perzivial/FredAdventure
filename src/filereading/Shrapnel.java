@@ -3,7 +3,11 @@ package filereading;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.util.Random;
-
+/**
+ * particles that use gravity
+ * @author Perzivial
+ *
+ */
 public class Shrapnel {
 	int x;
 	int y;

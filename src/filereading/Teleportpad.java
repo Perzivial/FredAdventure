@@ -2,7 +2,11 @@ package filereading;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
+/**
+ * Handles a teleportpad on the side of the screen
+ * @author Perzivial
+ *
+ */
 public class Teleportpad {
 	int x;
 	int y;

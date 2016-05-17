@@ -7,7 +7,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
+/**
+ * utility class. creates a bufferedimage to save space in game.java
+ * @author Perzivial
+ *
+ */
 public class Image{
 	BufferedImage img;
 	String path;

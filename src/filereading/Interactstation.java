@@ -1,7 +1,11 @@
 package filereading;
 
 import java.awt.Rectangle;
-
+/**
+ * two kinds of station, saving and healing
+ * @author Perzivial
+ *
+ */
 public class Interactstation {
 	int x;
 	int y;

@@ -1,7 +1,11 @@
 package filereading;
 
 import java.awt.*;
-
+/**
+ * walls that are drawn and checked if the player collides with
+ * @author Perzivial
+ *
+ */
 public class Wall {
 	int x;
 	int y;

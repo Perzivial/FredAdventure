@@ -4,7 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+/**
+ * used by NPC.java, each one is one textbox
+ * @author Perzivial
+ *
+ */
 public class Textbox {
 	int y = 520;
 	BufferedImage img;

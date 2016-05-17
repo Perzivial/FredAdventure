@@ -90,6 +90,7 @@ public class Game extends JComponent implements KeyListener {
 	Sound normalbattlemusic = battlemusic;
 	Sound wintry = new Sound("sounds/winter.wav");
 	Sound ding = new Sound("sounds/textbox.wav");
+	Sound roar = new Sound("sounds/roar.wav");
 	int theplayersx;
 	int theplayersy;
 	int attackpowermodifier;
@@ -450,7 +451,7 @@ public class Game extends JComponent implements KeyListener {
 
 				// checks for when in battle
 			} else {
-				if (e.getKeyCode() == KeyEvent.VK_Z && attacktimer == 0 && canattack && enemies.get(0).health > 0) {
+				if (e.getKeyCode() == KeyEvent.VK_Z && attacktimer == 0 && canattack && enemies.get(0).health > 0 && !theplayer.hasflipped) {
 					flipsidemeter += 25;
 					attacktimer = 50;
 					canattack = false;
@@ -467,6 +468,7 @@ public class Game extends JComponent implements KeyListener {
 				}
 				if (keyspressed.contains(KeyEvent.VK_F)) {
 					if (flipsidemeter == 100) {
+						roar.play();
 						theplayer.hasflipped = !theplayer.hasflipped;
 						for (int i = 0; i < enemies.size(); i++) {
 							enemies.get(i).isinverted = !enemies.get(i).isinverted;

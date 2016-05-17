@@ -164,7 +164,7 @@ public class Game extends JComponent implements KeyListener {
 	ArrayList<Explosion> firelist2 = new ArrayList<Explosion>();
 	int spawncloudtimer = 100;
 	ArrayList<Cloud> clouds = new ArrayList<Cloud>();
-
+	int rumbleamount = 5;
 	/**
 	 * Constructor. Creates a save file and a new folder for it is nessesary.
 	 * This is the file saved to by save() and load()
@@ -234,6 +234,7 @@ public class Game extends JComponent implements KeyListener {
 		}
 		g.setColor(Color.black);
 		g.fillRect(0, 0, 800, 600);
+		setrumble();
 		rumble(g);
 		rotateandrumble(g);
 		if (hasgamestarted && !isshowingchoosesound && !ispaused) {
@@ -1676,7 +1677,7 @@ public class Game extends JComponent implements KeyListener {
 		}
 
 		if (rumble) {
-			g.translate(prevx + randInt(-5, 5), prevy + randInt(-5, 5));
+			g.translate(prevx + randInt(-rumbleamount, rumbleamount), prevy + randInt(-rumbleamount, rumbleamount));
 		} else
 			g2.setTransform(oldXForm);
 	}
@@ -1977,5 +1978,11 @@ public class Game extends JComponent implements KeyListener {
 						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			criticalhittimer++;
 		}
+	}
+	public void setrumble(){
+		if(roar.isrunning())
+			rumbleamount = 15;
+		else
+			rumbleamount = 5;
 	}
 }

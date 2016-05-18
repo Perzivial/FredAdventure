@@ -22,8 +22,11 @@ import java.util.Random;
 import javax.sound.sampled.Line;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
+
 /**
- * The largest file. Manages everything in the larger game, held inside Gameviewer.java
+ * The largest file. Manages everything in the larger game, held inside
+ * Gameviewer.java
+ * 
  * @author Perzivial
  *
  */
@@ -169,6 +172,7 @@ public class Game extends JComponent implements KeyListener {
 	int spawncloudtimer = 100;
 	ArrayList<Cloud> clouds = new ArrayList<Cloud>();
 	int rumbleamount = 5;
+
 	/**
 	 * Constructor. Creates a save file and a new folder for it is nessesary.
 	 * This is the file saved to by save() and load()
@@ -456,7 +460,8 @@ public class Game extends JComponent implements KeyListener {
 
 				// checks for when in battle
 			} else {
-				if (e.getKeyCode() == KeyEvent.VK_Z && attacktimer == 0 && canattack && enemies.get(0).health > 0 && !theplayer.hasflipped) {
+				if (e.getKeyCode() == KeyEvent.VK_Z && attacktimer == 0 && canattack && enemies.get(0).health > 0
+						&& !theplayer.hasflipped) {
 					flipsidemeter += 25;
 					attacktimer = 50;
 					canattack = false;
@@ -806,7 +811,7 @@ public class Game extends JComponent implements KeyListener {
 					if (theplayer.currentattack == 3) {
 						theplayer.applydamage(
 								(theplayer.attacks.get(theplayer.currentattack).damage + (theplayer.attack)) / 2);
-						if(theplayer.health <= 0)
+						if (theplayer.health <= 0)
 							theplayer.health = 1;
 					}
 					rumbletimer = 15;
@@ -1538,7 +1543,7 @@ public class Game extends JComponent implements KeyListener {
 	 * @param amount
 	 * @param color
 	 */
-	public void shootexplosionsetcolor(int x, int y, int amount, Color color) {
+	public void shootexplosion(int x, int y, int amount, Color color) {
 		for (int i = 0; i < amount; i++) {
 
 			explosionparticles.add(new Explosion(x, y, randInt(-5, 10), randInt(-5, 5), randInt(15, 30), color));
@@ -1803,7 +1808,7 @@ public class Game extends JComponent implements KeyListener {
 					theplayer.health = theplayer.maxhealth + (5 * (theplayer.level - 1));
 					theplayer.isinteracting = false;
 					theplayer.rectinteract = null;
-					shootexplosionsetcolor(theplayer.x + 50, theplayer.y + 50, 30, Color.red);
+					shootexplosion(theplayer.x + 50, theplayer.y + 50, 30, Color.red);
 				}
 			}
 		}
@@ -1976,16 +1981,17 @@ public class Game extends JComponent implements KeyListener {
 
 		if (criticalhittimer < 30) {
 			if (supereffectivetimer < 30)
-				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 63 + (criticalhittimer / 2),
+				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 163 + (criticalhittimer / 2),
 						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			else
-				g.drawImage(criticalhit, 400 + +(criticalhittimer / 2), 200 + (criticalhittimer / 2),
+				g.drawImage(criticalhit, 400 + (criticalhittimer), 200 + (criticalhittimer / 2),
 						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			criticalhittimer++;
 		}
 	}
-	public void setrumble(){
-		if(roar.isrunning())
+
+	public void setrumble() {
+		if (roar.isrunning())
 			rumbleamount = 15;
 		else
 			rumbleamount = 5;

@@ -806,7 +806,8 @@ public class Game extends JComponent implements KeyListener {
 					if (theplayer.currentattack == 3) {
 						theplayer.applydamage(
 								(theplayer.attacks.get(theplayer.currentattack).damage + (theplayer.attack)) / 2);
-
+						if(theplayer.health <= 0)
+							theplayer.health = 1;
 					}
 					rumbletimer = 15;
 
@@ -1734,7 +1735,7 @@ public class Game extends JComponent implements KeyListener {
 								npcs.get(i).textboxes.get(o).draw(g);
 								if (npcs.get(i).currenttextbox != npcs.get(i).textboxes.size() - 1) {
 									g.setFont(g.getFont().deriveFont(g.getFont().getStyle(), 11));
-									g.drawString("Press shift to continue", 665, 565);
+									g.drawString("Press z to continue", 665, 565);
 								}
 							}
 

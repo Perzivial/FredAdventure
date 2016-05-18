@@ -968,8 +968,7 @@ public class Game extends JComponent implements KeyListener {
 		if (zer != defaultzer)
 			zer = defaultzer;
 		/*
-		 * if (battlemusic != defaultbattlemusic) battlemusic =
-		 * defaultbattlemusic;
+		 * clears the arraylists and sets up the music for the room
 		 */
 		shrapnellist.clear();
 		explosionparticles.clear();
@@ -1496,16 +1495,8 @@ public class Game extends JComponent implements KeyListener {
 	 * @param lightness
 	 */
 	public void dropshrapnel(int x, int y, int amount, float lightness) {
-		// shrapnellist.add(new Shrapnel(400, 300, randInt(-5, 5),
-		// randInt(-5, 5), randInt(30, 60)));
 		for (int i = 0; i < amount; i++) {
 			Random rand = new Random();
-			/*
-			 * 
-			 * float r = rand.nextFloat() / 2f + 0.5f; float g =
-			 * rand.nextFloat() / 2f + 0.5f; float b = rand.nextFloat() / 2f +
-			 * 0.5f; Color randomColor = new Color(r, g, b);
-			 */
 			final float hue = rand.nextFloat();
 			// Saturation between 0.1 and 0.3
 			final float saturation = (rand.nextInt(2000) + 1000) / 10000f;
@@ -1523,8 +1514,6 @@ public class Game extends JComponent implements KeyListener {
 	 * @param lightness
 	 */
 	public void shootexplosion(int x, int y, int amount, float lightness) {
-		// shrapnellist.add(new Shrapnel(400, 300, randInt(-5, 5),
-		// randInt(-5, 5), randInt(30, 60)));
 		for (int i = 0; i < amount; i++) {
 			Random rand = new Random();
 			final float hue = rand.nextFloat();

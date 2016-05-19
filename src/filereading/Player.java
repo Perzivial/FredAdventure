@@ -66,6 +66,7 @@ public class Player {
 	int forward = 0;
 	boolean isinteracting;
 	Rectangle rectinteract;
+	boolean shoulddraw = true;
 /**
  * name, health, attack, defence, x position, y position, level, experience
  * @param n
@@ -116,6 +117,7 @@ public class Player {
  * @param g
  */
 	public void draw(Graphics g) {
+		if(shoulddraw){
 		// TODO the draw method
 		placeinteractrects(g);
 		putbackinframe();
@@ -159,6 +161,7 @@ public class Player {
 			fredwalk = freddownright;
 		levelup(g);
 		drawcurrentattack(g);
+		}
 	}
 public void move(){
 	if(!isinbattle)

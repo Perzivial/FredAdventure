@@ -1,6 +1,4 @@
 package filereading;
-
-import java.awt.image.BufferedImage;
 /**
  * Holds the data for a single attack
  * @author Perzivial

@@ -1250,10 +1250,15 @@ public class Game extends JComponent implements KeyListener {
 			stan.textboxes.add(new Textbox(makeArrayList("Stan: I heard that you were pretty strong..."), stanneutral));
 			stan.textboxes.add(new Textbox(makeArrayList("Stan: So there's an extremely strong enemy in the next room",
 					"make sure that you're ready"), stanhappy));
+			stan.textboxes.add(new Textbox(
+					makeArrayList("Stan: Lol JK there's no enemy,", "go to the next room to finish the demo"),
+					stanhappy));
 			npcs.add(stan);
 			tppads.add(new Teleportpad(TPPAD_UP, 32));
 			tppads.add(new Teleportpad(TPPAD_RIGHT, 34));
 		}
+		if (currentroom == 34)
+			theplayer.shoulddraw = false;
 		if (currentroom == 666) {
 			startareamusic.stop();
 			hum.loop();
@@ -1317,6 +1322,7 @@ public class Game extends JComponent implements KeyListener {
 			wintry.stop();
 			bestfriend.loop();
 			g.drawImage(demoend, 0, 0, 800, 600, this);
+
 		}
 	}
 
@@ -1973,8 +1979,8 @@ public class Game extends JComponent implements KeyListener {
 				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 163 + (criticalhittimer / 2),
 						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
 			else
-				g.drawImage(criticalhit, 400 + (criticalhittimer), 200 + (criticalhittimer / 2),
-						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
+				g.drawImage(criticalhit, 400 + (criticalhittimer), 200 + (criticalhittimer / 2), 300 - criticalhittimer,
+						87 - (criticalhittimer / 2), this);
 			criticalhittimer++;
 		}
 	}

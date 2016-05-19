@@ -91,6 +91,13 @@ public class Sound {
 			clip.start();
 		}
 	}
+	public boolean isatbegining(){
+		if(!isdisabled)
+			if(clip.getFramePosition() <= 2){
+				return true;
+			}
+		return false;
+	}
 	public void rewind(){
 		clip.setFramePosition(0);
 	}

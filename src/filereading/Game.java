@@ -964,6 +964,7 @@ public class Game extends JComponent implements KeyListener {
 	 * "battle image", y offset in battle, bob amount in battle, "weakness") ---
 	 */
 	public void newroom() {
+		battlemusic.rewind();
 		// TODO the place where I make all of my rooms
 		if (zer != defaultzer)
 			zer = defaultzer;
@@ -1967,7 +1968,7 @@ public class Game extends JComponent implements KeyListener {
 
 		if (supereffectivetimer < 30) {
 			g.drawImage(supereffective, 400 + (supereffectivetimer / 2), 200 + (supereffectivetimer / 2),
-					300 - supereffectivetimer, 87 - (supereffectivetimer / 2), this);
+					300 - supereffectivetimer, 87 - (supereffectivetimer / 4), this);
 			supereffectivetimer++;
 		}
 	}
@@ -1977,10 +1978,10 @@ public class Game extends JComponent implements KeyListener {
 		if (criticalhittimer < 30) {
 			if (supereffectivetimer < 30)
 				g.drawImage(criticalhit, 400 + (criticalhittimer / 2), 163 + (criticalhittimer / 2),
-						300 - criticalhittimer, 87 - (criticalhittimer / 2), this);
+						300 - criticalhittimer, 97 - (criticalhittimer / 8), this);
 			else
 				g.drawImage(criticalhit, 400 + (criticalhittimer), 200 + (criticalhittimer / 2), 300 - criticalhittimer,
-						87 - (criticalhittimer / 2), this);
+						97 - (criticalhittimer / 8), this);
 			criticalhittimer++;
 		}
 	}

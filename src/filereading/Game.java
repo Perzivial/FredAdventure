@@ -1963,7 +1963,10 @@ public class Game extends JComponent implements KeyListener {
 			current.size -= 1;
 		}
 	}
-
+/**
+ * draws the super effective symbol
+ * @param g
+ */
 	public void drawsupereffective(Graphics g) {
 
 		if (supereffectivetimer < 30) {
@@ -1972,7 +1975,10 @@ public class Game extends JComponent implements KeyListener {
 			supereffectivetimer++;
 		}
 	}
-
+/**
+ * draws the critical hit
+ * @param g
+ */
 	public void drawcriticalhit(Graphics g) {
 
 		if (criticalhittimer < 30) {
@@ -1985,7 +1991,9 @@ public class Game extends JComponent implements KeyListener {
 			criticalhittimer++;
 		}
 	}
-
+/**
+ * This sets the screen to rumble
+ */
 	public void setrumble() {
 		if (roar.isrunning())
 			rumbleamount = 15;

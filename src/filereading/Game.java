@@ -615,7 +615,7 @@ public class Game extends JComponent implements KeyListener {
 		}
 		if (hasgamestarted && !isshowingchoosesound) {
 			keyspressed.remove(e.getKeyCode());
-			if (theplayer.isinbattle) {
+			if (theplayer.isinbattle && theplayer.health > 0 && currentenemy.health > 0) {
 				if (e.getKeyCode() == KeyEvent.VK_SPACE && attacktimer == 0 && canattack && currentenemy.forward == 0
 						&& !theplayer.hasflipped) {
 					if (theplayer.attacks.get(theplayer.currentattack).type.equals("Special")) {
@@ -1573,7 +1573,7 @@ public class Game extends JComponent implements KeyListener {
 	 */
 	public void drawattackbar(Graphics g) {
 		if (keyspressed.contains(KeyEvent.VK_SPACE) && canattack && currentenemy.forward == 0
-				&& !theplayer.hasflipped) {
+				&& !theplayer.hasflipped && theplayer.health > 0) {
 			if (attackpowermodifier < 52)
 				attackpowermodifier += 2;
 			g.drawImage(imgdamagetable, 50, 20, 240, 176, this);

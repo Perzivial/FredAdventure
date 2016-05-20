@@ -190,7 +190,7 @@ public class Game extends JComponent implements KeyListener {
 			boolean successful = dir.mkdir();
 			PrintWriter writer;
 			writer = new PrintWriter("saves/player.txt");
-			writer.println("luke");
+			writer.println("fred");
 			writer.println(20);
 			writer.println(3);
 			writer.println(7);
@@ -364,7 +364,7 @@ public class Game extends JComponent implements KeyListener {
 							g.setFont(new Font("MyriadPro", Font.PLAIN, 21));
 							g.setColor(Color.white);
 							g.drawString("A new attack is available, choose which attack you want to", 50, 250);
-							g.drawString("replace or press shift to exit", 50, 271);
+							g.drawString("replace with space or press z to exit", 50, 271);
 							g.drawString(theplayer.attacks.get(theplayer.currentattack).name, 300, 300);
 							g.drawString("Attack type: " + theplayer.attacks.get(theplayer.currentattack).element, 300,
 									321);
@@ -1032,6 +1032,7 @@ public class Game extends JComponent implements KeyListener {
 			tppads.add(new Teleportpad(TPPAD_LEFT, 3));
 
 			stations.add(new Interactstation(100, 100, "Save"));
+			stations.add(new Interactstation(200, 100, "Heal"));
 		}
 		if (currentroom == 1) {
 			// rocklist.add(new Rockenemy(300, 200));

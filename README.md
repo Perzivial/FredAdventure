@@ -49,3 +49,10 @@ every attack has a chance to deal a critical hit, which does double damage, just
  
 </snippet>
   
+#Screenshots
+![Failed to load image](http://s33.postimg.org/md571797j/Screen_Shot_2016_05_25_at_12_37_49_PM.png)
+
+![Failed to load image](http://s33.postimg.org/4c9y2uvz3/Screen_Shot_2016_05_25_at_12_37_53_PM.png)
+
+![Failed to load image](http://s33.postimg.org/95gu58m73/Screen_Shot_2016_05_25_at_12_37_59_PM.png)
+
